@@ -42,14 +42,14 @@ export default function TabsLayout() {
   };
   const handleNavCart = () => {
     setSidebarVisible(false);
-    // router.push("/cart");
+    router.push("/cart");
   };
   const handleNavWishlist = () => {
     setSidebarVisible(false);
-    // router.push("/wishlist");
+    router.push("/wishlist");
   };
   const handleNavProfile = () => {
-    // router.push("/profile");
+    router.push("/profile");
   };
   const handleNavOrder = () => {
     setSidebarVisible(false);
