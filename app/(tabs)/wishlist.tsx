@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
@@ -8,11 +8,11 @@ import {
   TouchableOpacity,
   Image,
   Alert,
-} from 'react-native';
-import { Heart, Plus, Trash2 } from 'lucide-react-native';
-import { useWishlist } from '@/contexts/WishlistContext';
-import { useCart } from '@/contexts/CartContext';
-import { router } from 'expo-router';
+} from "react-native";
+import { Heart, Plus, Trash2 } from "lucide-react-native";
+import { useWishlist } from "@/contexts/WishlistContext";
+import { useCart } from "@/contexts/CartContext";
+import { router } from "expo-router";
 
 export default function WishlistScreen() {
   const { wishlistItems, removeFromWishlist, clearWishlist } = useWishlist();
@@ -24,29 +24,33 @@ export default function WishlistScreen() {
 
   const handleRemoveItem = (itemId: number) => {
     Alert.alert(
-      'Remove Item',
-      'Are you sure you want to remove this item from your wishlist?',
+      "Remove Item",
+      "Are you sure you want to remove this item from your wishlist?",
       [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Remove', style: 'destructive', onPress: () => removeFromWishlist(itemId) },
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Remove",
+          style: "destructive",
+          onPress: () => removeFromWishlist(itemId),
+        },
       ]
     );
   };
 
   const handleClearWishlist = () => {
     Alert.alert(
-      'Clear Wishlist',
-      'Are you sure you want to remove all items from your wishlist?',
+      "Clear Wishlist",
+      "Are you sure you want to remove all items from your wishlist?",
       [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Clear All', style: 'destructive', onPress: clearWishlist },
+        { text: "Cancel", style: "cancel" },
+        { text: "Clear All", style: "destructive", onPress: clearWishlist },
       ]
     );
   };
 
-  const handleProductPress = (id: number) => {
-    router.push(`/product/${id}`);
-  };
+  // const handleProductPress = (id: number) => {
+  //   router.push(`/product/${id}`);
+  // };
 
   if (wishlistItems.length === 0) {
     return (
@@ -57,10 +61,12 @@ export default function WishlistScreen() {
         <View style={styles.emptyContainer}>
           <Heart size={80} color="#E0E0E0" />
           <Text style={styles.emptyTitle}>Your wishlist is empty</Text>
-          <Text style={styles.emptySubtitle}>Start adding your favorite idlis to see them here</Text>
+          <Text style={styles.emptySubtitle}>
+            Start adding your favorite idlis to see them here
+          </Text>
           <TouchableOpacity
             style={styles.browseButton}
-            onPress={() => router.push('/(tabs)')}
+            onPress={() => router.push("/(tabs)")}
           >
             <Text style={styles.browseButtonText}>Browse Menu</Text>
           </TouchableOpacity>
@@ -83,7 +89,7 @@ export default function WishlistScreen() {
           <TouchableOpacity
             key={item.id}
             style={styles.wishlistItem}
-            onPress={() => handleProductPress(item.id)}
+            // onPress={() => handleProductPress(item.id)}
           >
             <Image source={{ uri: item.image }} style={styles.itemImage} />
             <View style={styles.itemContent}>
@@ -115,25 +121,25 @@ export default function WishlistScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F9FA',
+    backgroundColor: "#F8F9FA",
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 24,
     paddingTop: 16,
     paddingBottom: 24,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
+    fontWeight: "bold",
+    color: "#333",
   },
   clearButton: {
-    color: '#FF6B35',
+    color: "#FF6B35",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   content: {
     flex: 1,
@@ -141,42 +147,42 @@ const styles = StyleSheet.create({
   },
   emptyContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 24,
   },
   emptyTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#333',
+    fontWeight: "bold",
+    color: "#333",
     marginTop: 16,
     marginBottom: 8,
   },
   emptySubtitle: {
     fontSize: 14,
-    color: '#666',
-    textAlign: 'center',
+    color: "#666",
+    textAlign: "center",
     marginBottom: 32,
   },
   browseButton: {
-    backgroundColor: '#FF6B35',
+    backgroundColor: "#FF6B35",
     borderRadius: 12,
     paddingVertical: 16,
     paddingHorizontal: 32,
   },
   browseButtonText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   wishlistItem: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 16,
     padding: 16,
     marginBottom: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    shadowColor: '#000',
+    flexDirection: "row",
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -193,29 +199,29 @@ const styles = StyleSheet.create({
   },
   itemName: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#333',
+    fontWeight: "600",
+    color: "#333",
     marginBottom: 4,
   },
   itemDescription: {
     fontSize: 12,
-    color: '#666',
+    color: "#666",
     marginBottom: 8,
   },
   itemPrice: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#FF6B35',
+    fontWeight: "bold",
+    color: "#FF6B35",
   },
   itemActions: {
-    flexDirection: 'column',
+    flexDirection: "column",
     gap: 8,
   },
   actionButton: {
-    backgroundColor: '#F8F9FA',
+    backgroundColor: "#F8F9FA",
     borderRadius: 8,
     padding: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
